@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# Spicy Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the official Spicy Chat website front-end repository! This can be build from anywhere.
 
-Currently, two official plugins are available:
+## Building This Repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Building this repo is quite straightforward. You'll need:
+- Node (test with `node -v`)
+- NPM (usually comes with node)
+- React (`npm install react react-router-dom react-dom`)
+- Material UI (`npm install @mui/material @mui/icons-material @emotion/react @emotion/styled`)
+- This repository in some folder somewhere on your computer.
 
-## Expanding the ESLint configuration
+And now, for the actaully important part, the build steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+npm install
+npm run build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+That's it! Simple, right?
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Publishing The Result
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+That should be pretty trivial. All you need to do is upload the result to your website and it will automatically work.
+
+### Deploying To Vercel
+
+Vercel can be quite difficult with it's untracable build errors. Hopefully it will build this repo. To do that, go to your [dashboard](https://vercel.com/) on Vercel. Then, click "Add New...", and click "Project". You will need to import this repo. Fork this repo (unless you're me) and import it from your repository list. It should start building the repository.
+
+**IMPORTANT:** You need to set a custom build command as `npm run build` and a custom install command as `npm install`. This will not work without doing this.
+
+### Deploying To Koyeb/Glitch/Railway
+
+The steps are pretty much the same, but you don't need to fork the repo. Just copy & paste this URL: `https://github.com/Spicy-Development/Spicy-Chat` as the import URL.
