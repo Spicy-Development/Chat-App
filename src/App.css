@@ -1,0 +1,13 @@
+html, body, div#root {
+  width: 100vw;
+  height: 100vh;
+  align-items: start;
+}
+
+html body * {
+  outline: none !important;
+}
+
+.page {
+  overflow-x: hidden;
+}
