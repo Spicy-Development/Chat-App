@@ -1,3 +1,80 @@
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-ExtraLight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Google Sans";
+    src: url("../fonts/ProductSans-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+}
+
 :root {
     --navbar-height: 48px; 
     --navbar-padding: 10px;
@@ -32,7 +109,7 @@
 
 html, body {
     box-sizing: border-box;
-    font-family: var(--primary-font), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: var(--primary-font), "Roboto", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0px;
@@ -90,6 +167,9 @@ h1 {
 .navbar .navbar-title {
     font-weight: bold;
     font-size: var(--navbar-line-height);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .navbar .navbar-content, 
@@ -108,7 +188,7 @@ h1 {
     text-decoration: none;
     color: inherit;
     font-size: 1rem;
-    margin-right: 16px;
+    margin-left: 16px;
 }
 
 .navbar .navbar-link, .navbar a, .navbar button, .navbar .btn {
@@ -162,7 +242,7 @@ h1 {
     padding: var(--sidebar-content-padding);
     margin: var(--sidebar-content-margin);
     text-decoration: none;
-    width: calc(var(--sidebar-width) - (var(--sidebar-padding) * 2));
+    width: calc(var(--sidebar-width) - (var(--sidebar-padding) * 2) - (var(--sidebar-content-margin) * 2));
 }
 
 .sidebar ul li a.active, details summary.active, details ul li a.active {
@@ -250,7 +330,7 @@ button.btn, a.btn {
     cursor: pointer;
     transition: 0.15s;
     color: #ffffff;
-    margin-right: 10px;
+    margin-right: 8px;
     font-family: inherit;
 }
 
@@ -259,7 +339,7 @@ button.btn.secondary, a.btn.secondary {
     color: #000000;
 }
 
-button.btn.secondary:hover, a.btn.secondary:hover {
+button.btn.secondary:hover:not(.no-hover-action), a.btn.secondary:hover:not(.no-hover-action) {
     background-color: #bbbbbb;
     box-shadow: 0px 0px 0px #00000000;
     color: #000000;
@@ -275,13 +355,13 @@ a.btn:active {
     font-size: 1.3rem;
 }
 
-button.btn:hover, a.btn:hover {
+button.btn:hover:not(.no-hover-action), a.btn:hover:not(.no-hover-action) {
     box-shadow: 0px 2px 6px var(--shadow-color);
     background-color: var(--button-hover-color);
     color: #ffffff;
 }
 
-input:hover, input:active, input:focus {
+input:hover:not(.no-hover-action), input:active, input:focus {
     border: 2px solid var(--primary-color);
 }
 
@@ -339,4 +419,16 @@ input:hover, input:active, input:focus {
 
 .bottom-0 {
     bottom: 0px;
+}
+
+.padding-left-0 {
+    padding-left: 0px !important;
+}
+
+.margin-left-0 {
+    margin-left: 0px !important;
+}
+
+.padding-0 {
+    padding: 0px !important;
 }

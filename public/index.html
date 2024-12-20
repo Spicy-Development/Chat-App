@@ -2,19 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <link rel="preload" as="style" type="text/css" href="./css/spicy.css" />
+    <link rel="preload" as="style" type="text/css" href="./css/spicy.config.css" />
+
     <link rel="stylesheet" type="text/css" href="./css/spicy.css" />
+    <link rel="stylesheet" type="text/css" href="./css/spicy.config.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spicy Chat</title>
   </head>
   <body>
     <div class="navbar">
-      <span class="navbar-title">Spicy Chat</span>
-      <ul class="navbar-content">
+      <ul class="padding-left-0">
+        <li><button class="btn secondary navbar-title margin-left-0 padding-0 no-hover-action">&#9776;</button></li>
+        <li class="navbar-title">Spicy Chat</li>
         <li><a href="#" class="navbar-link">Home</a></li>
       </ul>
     </div>
 
-    <div class="content-center-lg">
+    <div class="sidebar">
+      <ul>
+        <li><button class="btn">New Chat</button></li>
+        <li>No Chats, yet...</li>
+      </ul>
+    </div>
+
+    <div class="content-sidebar">
       <h1>Hello World!</h1>
     </div>
   </body>

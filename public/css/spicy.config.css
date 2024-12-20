@@ -1,0 +1,31 @@
+:root {
+    --navbar-height: 48px; 
+    --navbar-padding: 10px;
+    --navbar-line-height: 28px;
+    --navbar-position: fixed;
+    --navbar-background-color: #080824df;
+    --navbar-text-color: #ffffff;
+    --navbar-background-blur: 7px;
+    --sidebar-width: 260px;
+    --sidebar-height: calc(100% - 75px);
+    --sidebar-background-color: #020202;
+    --sidebar-text-color: #ffffff;
+    --sidebar-padding: 10px;
+    --sidebar-content-padding: 8px;
+    --sidebar-content-margin: 8px;
+    --db-sidebar-width: 200px;
+    --db-sidebar-height: calc(100% - 75px);
+    --db-sidebar-background-color: #020202;
+    --db-sidebar-text-color: #FFFFFF;
+    --db-sidebar-padding: 10px;
+    --db-sidebar-content-padding: 8px;
+    --db-sidebar-content-margin: 8px;
+    --background-color: #fefefe;
+    --text-color: #000000;
+    --primary-font: "Roboto";
+    --primary-color: #0080CB;
+    --shadow-color: #222222;
+    --block-background-color: #F0F0F0;
+    --block-padding: 8px;
+    --button-hover-color: #0060A9;
+}
