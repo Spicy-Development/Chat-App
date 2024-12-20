@@ -20,6 +20,7 @@ console.log(`Server started on port ${port}`);
 // =========== SOCKET.IO =========== //
 io.on('connection', (socket) => {
     console.log(`Client '${socket.id}' connected`);
+    io.emit('userConnection', socket.id);
     socket.on('disconnect', () => console.log(`Client '${socket.id}' disconnected`));
 });
 
