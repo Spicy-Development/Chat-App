@@ -1,6 +1,6 @@
-# Spicy Chat
+# Chat App
 
-Welcome to the official Spicy Chat website front-end repository! This can be build from anywhere.
+Hey there! This is a simple web app for chatting online. This can be built from anywhere.
 
 ## Building This Repository
 
@@ -9,6 +9,7 @@ Building this repo is quite straightforward. You'll need:
 - NPM (usually comes with node)
 - React (`npm install react react-router-dom react-dom`)
 - Material UI (`npm install @mui/material @mui/icons-material @emotion/react @emotion/styled`)
+- Vite
 - This repository in some folder somewhere on your computer.
 
 And now, for the actaully important part, the build steps:
