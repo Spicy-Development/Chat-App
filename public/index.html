@@ -15,35 +15,26 @@
     <script src="https://kit.fontawesome.com/536692a574.js" crossorigin="anonymous"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebSocket Chat App</title>
+    <title>Sockets</title>
   </head>
   <body>
     <div class="navbar">
-      <span class="navbar-title">WebSocket Chat App</span>
+      <span class="navbar-title">Sockets</span>
+      <!--
       <div id="searchGroup">
         <input type="search" name="search" id="search" placeholder="Search for people and commands..." />
         <button class="btn" id="searchButton"><i class="fa-solid fa-search"></i></button>
       </div>
       <button class="btn secondary">Log In/Sign Up</button>
+      -->
     </div>
-
     <div class="sidebar">
       <ul>
-        <li><button class="btn"><i class="fa-solid fa-plus"></i> New Chat</button></li>
-        <li>
-          <button class="btn secondary">
-            <span class="account-circle"><i class="fa-solid fa-user"></i></span>
-            <span class="chat-details">
-              Global Chat
-              <br />
-              <i class="light-muted-text">Click to view...</i>
-            </span>
-          </button>
-        </li>
+
       </ul>
     </div>
 
-    <div class="content-sidebar">
+    <div id="content-sidebar">
       <!--
       <h1 class="center-text">No Chat Selected</h1>
       <p class="center-text muted-text">Select one from the sidebar on the left (or the menu if you are on mobile), or make a new one!</p>
@@ -62,5 +53,6 @@
     </div>
 
     <script src="scripts/socket.js" type="module"></script>
+    <script src="scripts/firebase.js" type="module"></script>
   </body>
 </html>

@@ -1,0 +1,1 @@
+/nix/store/jv0vkc4w0gsyqbh4dz76ahqlnpq5w0r4-postgresql-and-plugins-16.5/bin/postgres "-k" "/tmp/postgres"

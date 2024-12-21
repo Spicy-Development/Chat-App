@@ -7,6 +7,13 @@
   packages = [
     pkgs.nodejs_20
   ];
+  services.postgres = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    extensions = with pkgs.postgresql_15.pkgs; [
+      "postgis"
+    ];
+  };
   # Sets environment variables in the workspace
   env = {};
   idx = {
@@ -19,13 +26,13 @@
       onCreate = {
         npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "src/App.tsx" "src/App.ts" "src/App.jsx" "src/App.js" ];
+        default.openFiles = [ "public/index.html" "public/socket.js" "public/firebase.js" "server.js" ];
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
     };
     # Enable previews and customize configuration
     previews = {
-      enable = true;
+      enable = false;
       previews = {
         web = {
           command = ["npm" "run" "dev" "--" "--port" "$PORT" "--host" "0.0.0.0"];

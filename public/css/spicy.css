@@ -255,7 +255,7 @@ h1 {
     padding-left: 3px;
 }
 
-.content-sidebar {
+#content-sidebar {
     top: var(--navbar-height);
     left: calc(var(--sidebar-width) + var(--body-padding));
     position: absolute;
