@@ -97,6 +97,7 @@
     --db-sidebar-padding: 10px;
     --db-sidebar-content-padding: 8px;
     --db-sidebar-content-margin: 8px;
+    --body-padding: 15px;
     --background-color: #fefefe;
     --text-color: #000000;
     --primary-font: "Roboto";
@@ -162,6 +163,10 @@ h1 {
 .navbar * {
     color: var(--navbar-text-color) !important;
     line-height: var(--navbar-line-height);
+}
+
+.navbar input {
+    color: #000000 !important;
 }
 
 .navbar .navbar-title {
@@ -252,7 +257,7 @@ h1 {
 
 .content-sidebar {
     top: var(--navbar-height);
-    left: calc(var(--sidebar-width) + 55px);
+    left: calc(var(--sidebar-width) + var(--body-padding));
     position: absolute;
     right: 0px;
     bottom: 0px;
@@ -332,6 +337,7 @@ button.btn, a.btn {
     color: #ffffff;
     margin-right: 8px;
     font-family: inherit;
+    display: flex;
 }
 
 button.btn.secondary, a.btn.secondary {
@@ -340,7 +346,7 @@ button.btn.secondary, a.btn.secondary {
 }
 
 button.btn.secondary:hover:not(.no-hover-action), a.btn.secondary:hover:not(.no-hover-action) {
-    background-color: #bbbbbb;
+    background-color: #bbbbbb70;
     box-shadow: 0px 0px 0px #00000000;
     color: #000000;
 }
@@ -356,13 +362,17 @@ a.btn:active {
 }
 
 button.btn:hover:not(.no-hover-action), a.btn:hover:not(.no-hover-action) {
-    box-shadow: 0px 2px 6px var(--shadow-color);
     background-color: var(--button-hover-color);
     color: #ffffff;
 }
 
 input:hover:not(.no-hover-action), input:active, input:focus {
     border: 2px solid var(--primary-color);
+}
+
+.btn.icon, .btn.secondary.icon {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
 }
 
 .list-x {
@@ -399,6 +409,14 @@ input:hover:not(.no-hover-action), input:active, input:focus {
     height: 1em;
 }
 
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #eeeeee;
+}
+
 .full-height {
     height: 100%;
 }
@@ -431,4 +449,30 @@ input:hover:not(.no-hover-action), input:active, input:focus {
 
 .padding-0 {
     padding: 0px !important;
+}
+
+.muted-text {
+    color: #3f3f3f;
+}
+
+.light-muted-text {
+    color: #cdcdcd;
+}
+
+.center-y {
+    line-height: inherit !important;
+    vertical-align: middle;
+    align-items: center;
+}
+
+/* ====== Font Awesome!!!! ====== */
+
+i.fa-solid,
+i.fa-classic,
+i.fa-regular,
+i.fa-thin,
+i.fa-medium {
+    margin-right: 8px;
+    line-height: inherit !important;
+    vertical-align: middle;
 }

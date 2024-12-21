@@ -24,6 +24,11 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => console.log(`Client '${socket.id}' disconnected`));
 });
 
+io.on('message', (data) => {
+    io.emit('message', data);
+    console.log(`[${data.date} ${data.time}] @${data.sender}: ${data.message}`); // TODO: Handle Messages
+});
+
 // ====== Catch all routes ====== //
 // For all other routes not specified, serve the index.html file. This allows client-side routing to work properly.
 app.get('*', (req, res) => {

@@ -14,10 +14,32 @@ socket.on('userConnection', (id) => {
     console.log(`User ${id} connected.`);
 });
 
-/*
-<script type="module">
-  import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+socket.on('message', (data) => {
+    const messageElement = document.createElement('div');
+    const displayText = `[${data.date} ${data.time}] @${data.sender}: ${data.message}`;
+    messageElement.innerText = displayText;
+    chatWindow.appendChild(messageElement);
+})
 
-  const socket = io();
-</script>
-*/
+const messageBox = document.getElementById('messageBox');
+const sendButton = document.getElementById('sendButton');
+const chatWindow = document.getElementById('chatWindow');
+
+const sendMessage = () => {
+    const message = messageBox.value;
+    socket.emit('message', {
+        sender: socket.id,
+        message: message,
+        time: new Date().toLocaleTimeString(),
+        date: new Date().toLocaleDateString()
+    });
+    messageBox.value = "";
+};
+
+messageBox.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        sendMessage(); // TODO: Same Damn Todo As The Next One
+    }
+});
+
+sendButton.addEventListener("click", sendMessage()); // TODO: Verbose Debugging Features
