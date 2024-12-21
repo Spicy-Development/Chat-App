@@ -3,7 +3,7 @@ import express from 'express';
 import { Server } from 'socket.io';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import mysql from 'mysql2';
+import { MongoClient } from 'mongodb';
 
 const port = 3000;
 const app = express();
@@ -18,10 +18,22 @@ const io = new Server(server);
 
 console.log(`Server started on port ${port}`);
 
-// =========== MySQL =========== //
+// =========== MongoDB =========== //
+const uri = "mongodb://localhost:27017"; // Replace with your MongoDB connection string
+const client = new MongoClient(uri);
 
+async function run() {
+    try {
+        await client.connect();
+        console.log("Connected to MongoDB.");
+    } catch (e) {
+        console.error(e);
+        throw new Error("Failed to connect to MongoDB: " + e);
+    }
+}
+run().catch(console.dir);
 
-// =========== SOCKET.IO =========== //
+// ========== SOCKET.IO ========== //
 io.on('connection', (socket) => {
     console.log(`Client '${socket.id}' connected`);
     io.emit('userConnection', socket.id);

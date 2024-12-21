@@ -7,9 +7,9 @@
   packages = [
     pkgs.nodejs_20
   ];
-  services.mysql = {
+  services.mongodb = {
     enable = true;
-    package = pkgs.mysql;
+    package = pkgs.mongodb;
   };
   # Sets environment variables in the workspace
   env = {};
