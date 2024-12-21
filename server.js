@@ -24,9 +24,15 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => console.log(`Client '${socket.id}' disconnected`));
 });
 
-io.on('message', (data) => {
-    io.emit('message', data);
-    console.log(`[${data.date} ${data.time}] @${data.sender}: ${data.message}`); // TODO: Handle Messages
+io.sockets.on('connection', (socket) => {
+    socket.on('message', (messageData) => {
+        const timestamp = new Date();
+        const date = timestamp.toLocaleDateString();
+        const time = timestamp.toLocaleTimeString();
+        const formattedMessage = { ...messageData, date, time }; 
+        io.emit('message', formattedMessage); 
+        console.log(`[${date} ${time}] @${messageData.sender}: ${messageData.message}`);
+    });
 });
 
 // ====== Catch all routes ====== //

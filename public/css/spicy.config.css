@@ -67,6 +67,7 @@
 #chatWindow {
     vertical-align: bottom;
     padding: 15px;
+    margin-bottom: 35px;
 }
 
 .chat-details {
@@ -79,8 +80,11 @@
     left: calc(var(--sidebar-width) + var(--body-padding) + 15px);
     right: 0px;
     border-top: 2px solid #eeeeee;
+    height: 35px;
+    background-color: #ffffff;
 }
 
 #messageBox {
     width: calc(100vw - (var(--sidebar-width) + var(--body-padding) + 15px) - 140px);
+    overflow-y: scroll;
 }
