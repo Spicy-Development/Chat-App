@@ -30,10 +30,7 @@ async function run() {
         console.error(e);
         throw new Error("Failed to connect to MongoDB: " + e);
     }
-    const db = client.db("spicy-chat");
-    const collection = db.collection("messages");
 }
-
 run().catch(console.dir);
 
 // ========== SOCKET.IO ========== //
@@ -43,15 +40,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => console.log(`Client '${socket.id}' disconnected`));
 });
 
-io.sockets.on('connection', async (socket) => {
-    const collection = client.db("spicy-chat").collection("messages");
-    collection.countDocuments().then((msgCount) => {
-        for (let i = 0; i < msgCount; i++) {
-            collection.find().skip(i).limit(1).toArray().then(items => {
-                socket.emit('message', items[0]);
-            });
-        }
-    });
+io.sockets.on('connection', (socket) => {
     socket.on('message', (messageData) => {
         const timestamp = new Date();
         const date = timestamp.toLocaleDateString();
@@ -59,25 +48,7 @@ io.sockets.on('connection', async (socket) => {
         const formattedMessage = { ...messageData, date, time }; 
         io.emit('message', formattedMessage); 
         console.log(`[${date} ${time}] @${messageData.sender}: ${messageData.message}`);
-        collection.insertOne({ date: date, time: time, message: messageData.message, sender: messageData.sender });
     });
-});
-
-// Endpoint to retrieve a specific message by index
-app.get('/message/:index', async (req, res) => {
-    try {
-        const index = parseInt(req.params.index);
-        const collection = client.db("spicy-chat").collection("messages");
-        const message = await collection.findOne({},{skip: index, limit:1}); 
-
-        if (message) {
-            res.json(message);
-        } else {
-            res.status(404).json({ message: 'Message not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ message: 'Server error' });
-    }
 });
 
 // ====== Catch all routes ====== //
