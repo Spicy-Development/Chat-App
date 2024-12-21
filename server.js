@@ -3,6 +3,7 @@ import express from 'express';
 import { Server } from 'socket.io';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import mysql from 'mysql2';
 
 const port = 3000;
 const app = express();
@@ -16,6 +17,9 @@ const server = app.listen(port);
 const io = new Server(server);
 
 console.log(`Server started on port ${port}`);
+
+// =========== MySQL =========== //
+
 
 // =========== SOCKET.IO =========== //
 io.on('connection', (socket) => {

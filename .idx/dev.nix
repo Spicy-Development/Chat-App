@@ -7,12 +7,9 @@
   packages = [
     pkgs.nodejs_20
   ];
-  services.postgres = {
+  services.mysql = {
     enable = true;
-    package = pkgs.postgresql_16;
-    extensions = with pkgs.postgresql_15.pkgs; [
-      "postgis"
-    ];
+    package = pkgs.mysql;
   };
   # Sets environment variables in the workspace
   env = {};
