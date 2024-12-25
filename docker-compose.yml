@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  sockets-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      # Define your MongoDB connection string here
+      MONGODB_URI: mongodb://mongo:27017/socketsdb
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
