@@ -18,17 +18,20 @@ const observer = new MutationObserver((mutationsList, observer) => {
 observer.observe(chatWindow, { childList: true });
 
 const printMessage = (data) => {
-    const chatMessage = $('div').addClass('chat-message');
-    const chatMessageHead = $('div').attr('class', 'chat-message-head').html(`@${data.sender} - ${data.date} ${data.time} UTC`);
-    const chatMessageBody = $('div').attr('class', 'chat-message-body').html(data.message);
-
-    return chatMessage.append(chatMessageHead, chatMessageBody).appendTo(chatWindow);
+    const html = `<div class="chat-message"><div class="chat-message-head"><b>@${data.sender}</b> - ${data.date} ${data.time} UTC</div><div class="chat-message-body">${data.message}</div></div>`;
+    chatWindow.innerHTML += html;
 };
+
+const log = (text) => {
+    chatWindow.innerHTML += "<br>" + `<i>${text}</i>`;
+}
 
 socket.on('connect', () => {
     console.log('Connected to the server.');
     // Request message history when connected
     socket.emit('loadMessages');
+
+    log("Connected to the server.");
 });
 
 socket.on('messageHistory', (messages) => {

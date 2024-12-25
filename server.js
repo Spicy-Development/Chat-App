@@ -81,6 +81,8 @@ io.sockets.on('connection', (socket) => {
     } catch (error) {
       console.error("Error saving message:", error);
     }
+
+    io.emit('message', messageData);
   });
 });
 

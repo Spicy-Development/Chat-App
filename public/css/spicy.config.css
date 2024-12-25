@@ -88,3 +88,7 @@
     width: calc(100vw - (var(--sidebar-width) + var(--body-padding) + 15px) - 140px);
     overflow-y: scroll;
 }
+
+.chat-message {
+    background-color: #0080CB; /* Style later. */
+}
