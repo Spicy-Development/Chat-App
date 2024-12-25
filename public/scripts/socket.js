@@ -17,8 +17,27 @@ const observer = new MutationObserver((mutationsList, observer) => {
 
 observer.observe(chatWindow, { childList: true });
 
+const printMessage = (data) => {
+    const chatMessage = $('div').addClass('chat-message');
+    const chatMessageHead = $('div').attr('class', 'chat-message-head').html(`@${data.sender} - ${data.date} ${data.time} UTC`);
+    const chatMessageBody = $('div').attr('class', 'chat-message-body').html(data.message);
+
+    return chatMessage.append(chatMessageHead, chatMessageBody).appendTo(chatWindow);
+};
+
 socket.on('connect', () => {
     console.log('Connected to the server.');
+    // Request message history when connected
+    socket.emit('loadMessages');
+});
+
+socket.on('messageHistory', (messages) => {
+    // Clear existing messages in the chat window
+    chatWindow.innerHTML = '';
+    // Display loaded messages
+    messages.forEach(data => {
+        printMessage(data);
+    });
 });
 
 socket.on('disconnect', () => {
@@ -30,11 +49,7 @@ socket.on('userConnection', (id) => {
 });
 
 socket.on('message', (data) => {
-    const messageElement = document.createElement('div');
-    const displayText = `[${data.date} ${data.time}] @${data.sender}: ${data.message}`;
-    messageElement.innerText = displayText;
-
-    chatWindow.appendChild(messageElement);
+    printMessage(data);
 });
 
 const sendMessage = () => {
